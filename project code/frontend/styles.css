@@ -1,0 +1,173 @@
+/* ===== Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* ===== Navigation Bar ===== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f2937;
+    padding: 15px 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px; /* Adjust size as needed */
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #00c6ff;
+}
+
+/* Mobile Navbar */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #222;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    color: white;
+    padding: 100px 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: auto;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero-logo {
+    width: 120px;
+    margin-bottom: 15px;
+    animation: popIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 36px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background: #218838;
+}
+
+/* ===== Features Section ===== */
+.features {
+    margin-top: 50px;
+}
+
+.feature-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Footer ===== */
+footer {
+    background: #1f2937;
+    color: white;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #00c6ff;
+    text-decoration: none;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
