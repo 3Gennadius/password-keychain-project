@@ -1,31 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Manager</title>
+    <title>Dashboard | DúnKey</title>
     <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
+    <link rel="stylesheet" href="dashboard-mpass.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
 
-        <!--Navigation Bar-->
-        <nav>
-            <div class="logo">
-                <img src="assets/D.svg" alt="DúnKey Logo">
-                <span class="brand-name">DúnKey</span>
-            </div>
-        <div class="nav-links" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="settings.html">Settings</a>
+   <!-- Navigation Bar (Post-Login) -->
+<nav class="topnav" id="myTopnav">
+    <div class="logo">
+        <img src="assets/D.svg" alt="DúnKey Logo">
+        <span class="brand-name">DúnKey</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="manage-passwords.html">Manage Passwords</a>
+        <a href="settings.html">Settings</a>
+        
+    </div>
+
+    <!-- Hamburger Icon for Mobile -->
+    <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+        <i class="fa fa-bars"></i>
+    </a>
+</nav>
+
+    <!-- Dashboard Container -->
+    <section class="dashboard">
+        <h1>Welcome Back, <span id="user-name">User</span></h1>
+
+        <div class="circle-container">
+            <svg class="progress-ring" width="150" height="150">
+                <circle class="progress-ring__background" cx="75" cy="75" r="60"></circle>
+                <circle class="progress-ring__progress" cx="75" cy="75" r="60"></circle>
+            </svg>
+            <div class="percentage-text" id="security-score">30%</div>
         </div>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </nav>
+        <!-- Weak Password Alert (EXAMPLE BEFORE BACKEND WORK) -->
+        <div class="weak-password-alert">
+            <h3>⚠ Warning: Weak Passwords Detected!</h3>
+            <p>Some of your passwords are weak or reused. Consider updating them.</p>
+            <a href="manage-passwords.html" class="btn">Update Passwords</a>
+        </div>
 
+        <!-- Saved Passwords Table (EXAMPLES BEFORE BACKEND WORK) -->
+        <h2>Your Saved Passwords</h2>
+        <table class="password-table">
+            <thead>
+                <tr>
+                    <th>Website</th>
+                    <th>Username</th>
+                    <th>Strength</th>
+                    <th>Last Updated</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Google</td>
+                    <td>user@gmail.com</td>
+                    <td class="strong">Strong</td>
+                    <td>1 week ago</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td>user123</td>
+                    <td class="weak">Weak</td>
+                    <td>3 months ago</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 DúnKey | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
 
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
 </html>
