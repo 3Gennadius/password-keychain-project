@@ -1,12 +1,8 @@
 // Toggle Navigation Menu for Mobile
 function toggleNav() {
-    var nav = document.getElementById("myTopnav");
-    if (nav.classList.contains("responsive")) {
-        nav.classList.remove("responsive");
-    } else {
-        nav.classList.add("responsive");
-    }
-}
+    const nav = document.getElementById("myTopnav");
+    nav.classList.toggle("responsive");
+  }
 
 function updateSecurityScore(score) {
     const circle = document.querySelector('.progress-ring__progress');
