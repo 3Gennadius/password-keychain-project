@@ -26,6 +26,12 @@ CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `email` varchar(95) NOT NULL,
+  `profile_icon` varchar(900) DEFAULT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(25) NOT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `darkmode_preference` tinyint(1) NOT NULL DEFAULT '0',
+  `notifications_preference` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `username_UNIQUE` (`username`)
@@ -38,7 +44,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'jamesf','james@gmail.com'),(2,'alexa','alex@gmail.com');
+INSERT INTO `users` VALUES (1,'jamesf','james@gmail.com','https://images.unsplash.com/photo-1615789591457-74a63395c990?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0JTIwbWVvd3xlbnwwfHwwfHx8MA%3D%3D','James','Foley','2002-02-17',1,0),(2,'alexa','alex@gmail.com','https://www.google.com/imgres?q=dog%20images%20jpg&imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1561037404-61cd46aa615b%3Ffm%3Djpg%26q%3D60%26w%3D3000%26ixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZ3xlbnwwfHwwfHx8MA%253D%253D&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdog&docid=QhOCUujE2l7z2M&tbnid=HwBa5aQBrMZMIM&vet=12ahUKEwjtsdCy8_aMAxU1T0EAHRR4IQwQM3oECEMQAA..i&w=3000&h=2000&hcb=2&ved=2ahUKEwjtsdCy8_aMAxU1T0EAHRR4IQwQM3oECEMQAA','Alex','Aregbesola','2006-07-15',0,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-21 12:54:23
+-- Dump completed on 2025-04-27  1:04:49
