@@ -1,24 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Support | DúnKey</title>
-    <link rel="stylesheet" href="/settings.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Support | DúnKey</title>
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .form-response {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #3c763d;
+    }
+    .form-response.error {
+      color: #a94442;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="settings-page">
-        <h2>Contact Support</h2>
-        <p>Need help? Send us a message below:</p>
+<!-- Navigation Bar -->
+<nav class="topnav" id="myTopnav">
+  <div class="logo">
+    <img src="assets/D.svg" alt="DúnKey Logo">
+    <span class="brand-name">DúnKey</span>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <!-- Navigation links will be dynamically inserted by authentication.js -->
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</nav>
 
-        <label for="message">Your Message:</label>
-        <textarea id="message" rows="4"></textarea>
-        
-        <a href="settings.html">
-            <button class="save-btn">Submit</button>
-            </a>
+<!-- Contact Form Section -->
+<div class="settings-page">
+  <h2>Contact Support</h2>
+  <p>Need help? Send us a message below:</p>
+
+  <form id="contact-form">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" maxlength="100" required>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="4" maxlength="400" required></textarea>
+
+    <button type="submit" class="save-btn">Submit</button>
+  </form>
+
+  <div id="contact-response" class="form-response"></div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column align-left">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
     </div>
+
+    <div class="footer-column center-brand">
+      <h3>DúnKey</h3>
+      <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
+      <p class="footer-motto">Simple. Secure. Yours.</p>
+    </div>
+
+    <div class="footer-column align-right">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 DúnKey. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript Files -->
+<script src="js/authentication.js"></script>
+<script src="js/script.js"></script>
+<script src="js/contact.js"></script>
 
 </body>
 </html>

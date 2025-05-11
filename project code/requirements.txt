@@ -1,0 +1,12 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+Flask-WTF
+Flask-Limiter
+Flask-Mail
+PyMySQL
+Flask-Bcrypt
+python-dotenv
+pycryptodome
+Pillow
+Redis

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ | DúnKey</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="topnav" id="myTopnav">
+  <div class="logo">
+    <img src="assets/D.svg" alt="DúnKey Logo">
+    <span class="brand-name">DúnKey</span>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <!-- Navigation links will be dynamically inserted by authentication.js -->
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Welcome to DúnKey FAQ</h1>
+    <p>Got questions? We’ve got answers.</p>
+  </div>
+</header>
+
+<!-- FAQ Section -->
+<section class="faq-section container">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+
+  <div class="feature-box">
+    <div class="feature">
+      <h3>How do I manage my passwords?</h3>
+      <p>Once logged in, Go to your dashboard. From there you can then search, filter by strength, add new entries, or edit/delete existing ones.</p>
+    </div>
+    <div class="feature">
+      <h3>What if I forget my master password?</h3>
+      <p>Your vault is encrypted client-side and cannot be recovered without the original password. If you forget it, contact support for assistance.</p>
+    </div>
+    <div class="feature">
+      <h3>Can I change the theme and notifications?</h3>
+      <p>Yes—under “Profile” → “App Preferences,” you can toggle dark mode and enable or disable notifications to suit your workflow.</p>
+    </div>
+    <div class="feature">
+      <h3>How do I contact support?</h3>
+      <p>Use the “Contact” page to send us a message. You’ll get an automatic acknowledgment, and our team aims to respond within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column align-left">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column center-brand">
+      <h3>DúnKey</h3>
+      <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
+      <p class="footer-motto">Simple. Secure. Yours.</p>
+    </div>
+
+    <div class="footer-column align-right">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 DúnKey. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript Files -->
+<script src="js/authentication.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

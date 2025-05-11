@@ -1,109 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>About | DúnKey</title>
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | DúnKey</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="topnav" id="myTopnav">
-        <div class="logo">
-            <img src="/assets/D.svg" alt="DúnKey Logo">
-            <span class="brand-name">DúnKey</span>
-        </div>
-        <div class="nav-links" id="nav-links">
-            <a href="/index.html">Home</a>
-            <a href="/login.html">Login</a>
-            <a href="/register.html">Register</a>
-            <a href="/about.html" class="active">About</a>
-            <a href="/security-tips.html">Security Tips</a>
-            <a href="/contacthome.html">Contact</a>
+<!-- Navigation Bar -->
+<nav class="topnav" id="myTopnav">
+  <div class="logo">
+    <img src="assets/D.svg" alt="DúnKey Logo">
+    <span class="brand-name">DúnKey</span>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <!-- Dynamic links inserted by authentication.js -->
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</nav>
 
-            <!-- Close Menu Button (shown only on mobile) -->
-            <a href="javascript:void(0);" class="close-menu" onclick="toggleNav()">
-                <span>&#10094;</span> Close
-              </a>
-        </div>
-        <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </nav>
+<!-- Hero Section -->
+<header class="hero about-hero">
+  <div class="hero-content">
+    <h1>About DúnKey</h1>
+    <p>Built with security, simplicity, and trust at the core.</p>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <header class="hero about-hero">
-        <div class="hero-content">
-            <h1>About DúnKey</h1>
-            <p>Built with security, simplicity, and trust at the core.</p>
-        </div>
-    </header>
+<!-- About Sections -->
+<section class="about-section">
+  <div class="about-card">
+    <h2>Who We Are</h2>
+    <p>DúnKey was developed as a third-year project by cybersecurity students Alex, James, and Ganster, with a focus on building practical tools for real-world password protection.</p>
+  </div>
 
-    <!-- About Sections -->
-    <section class="about-section">
-        <div class="about-card">
-            <h2>Who We Are</h2>
-            <p>Add text here — explain that this project was developed by cybersecurity students as a 3rd year project focused on real-world password security and protection.</p>
-        </div>
+  <div class="about-card">
+    <h2>Why We Built DúnKey</h2>
+    <p>Weak and reused passwords are one of the top reasons for account breaches. Our mission is to provide a strong, clean, and secure way for users to manage their credentials.</p>
+  </div>
 
-        <div class="about-card">
-            <h2>Why We Built DúnKey</h2>
-            <p>Weak and reused passwords are one of the top reasons for account breaches. Our mission is to provide a strong, clean, and secure way for users to manage their credentials.</p>
-        </div>
+  <div class="about-card">
+    <h2>What Makes It Secure</h2>
+    <p>DúnKey uses AES-256 encryption for storing password vaults, bcrypt for login credentials, and runs vulnerability testing to ensure the highest standard of security.</p>
+  </div>
 
-        <div class="about-card">
-            <h2>What Makes It Secure</h2>
-            <p>DúnKey uses AES-256 encryption for storing password vaults, bcrypt for login credentials, and runs vulnerability testing to ensure the highest standard of security.</p>
-        </div>
+  <div class="about-card">
+    <h2>Future Goals</h2>
+    <p>We plan to expand DúnKey with browser extensions, mobile apps for iOS and Android, and secure syncing across devices.</p>
+  </div>
+</section>
 
-        <div class="about-card">
-            <h2>Future Goals</h2>
-            <p>Add text here — could mention future plans like browser extensions, mobile app development, or syncing features across devices.</p>
-        </div>
-    </section>
-
-   <!-- Footer -->
+<!-- Footer -->
 <footer class="footer">
-    <div class="footer-container">
-      
-      <!-- Company Left -->
-      <div class="footer-column align-left">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about.html">About Us</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-          <li><a href="/faq.html">FAQ</a></li>
-        </ul>
-      </div>
-  
-      <!-- Brand Center -->
-      <div class="footer-column center-brand">
-        <h3>DúnKey</h3>
-        <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
-        <p class="footer-motto">Simple. Secure. Yours.</p>
-      </div>
-  
-      <!-- Legal Right -->
-      <div class="footer-column align-right">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
-        </ul>
-      </div>
+  <div class="footer-container">
+    <div class="footer-column align-left">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
     </div>
-  
 
-  
-    <!-- Bottom Line -->
-    <div class="footer-bottom">
-      <p>&copy; 2024 DúnKey. All rights reserved.</p>
+    <div class="footer-column center-brand">
+      <h3>DúnKey</h3>
+      <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
+      <p class="footer-motto">Simple. Secure. Yours.</p>
     </div>
-  </footer>
 
-    <script src="/script.js"></script>
+    <div class="footer-column align-right">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2024 DúnKey. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript Files -->
+<script src="js/authentication.js"></script>
+<script src="js/script.js"></script>
+
 </body>
 </html>

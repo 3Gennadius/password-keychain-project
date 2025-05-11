@@ -1,0 +1,657 @@
+/* Dashboard Container */
+.dashboard {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Welcome Header */
+.dashboard h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Circular Progress Bar (Overall Password Strength) */
+.circle-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 20px auto;
+}
+
+.progress-ring__background {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 12;
+}
+
+.progress-ring__progress {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 377;
+    stroke-dashoffset: 377;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1s ease-out, stroke 1s ease-out;
+}
+
+.percentage-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Weak Password Alert Box */
+.weak-password-alert {
+    background: rgba(255, 87, 87, 0.1);
+    color: #d9534f;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.weak-password-alert h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.weak-password-alert p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #218838;
+}
+
+/* Password Table Styling */
+.password-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+}
+
+/* Table Header Styling */
+.password-table thead {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.password-table th {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Table Row Styling */
+.password-table tbody tr {
+    transition: background 0.3s ease-in-out;
+}
+
+.password-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.password-table tbody tr:hover {
+    background: rgba(0, 123, 255, 0.15);
+}
+
+/* Table Cells Styling */
+.password-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Edit & Delete Buttons */
+.password-table td button {
+    background: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+}
+
+/* Edit Button */
+.password-table td .edit-btn {
+    background: #ffc107;
+    color: black;
+    border-color: #ffc107;
+}
+
+.password-table td .edit-btn:hover {
+    background: #e0a800;
+    border-color: #e0a800;
+}
+
+/* Delete Button */
+.password-table td .delete-btn {
+    background: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.password-table td .delete-btn:hover {
+    background: #c82333;
+    border-color: #c82333;
+}
+
+
+/* Password Strength Colors */
+.strong {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.weak {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+
+
+.manage-passwords {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.filter-container input,
+.filter-container select {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Strength Bar */
+.strength-bar {
+  height: 8px;
+  width: 0%;
+  background-color: #ccc;
+  margin: 8px auto 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  max-width: 350px;
+}
+
+/* Copy Button */
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.copy-btn:hover {
+  color: #0056b3;
+}
+
+/* ===== Manage Passwords Page Styling ===== */
+.manage-passwords {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.manage-passwords h2 {
+    font-size: 28px;
+    color: #1f2937;
+    margin-bottom: 30px;
+}
+
+/* ===== Search & Filter Section ===== */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-container input,
+.filter-container select {
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 200px;
+    background: #f9f9f9;
+    transition: 0.3s ease-in-out;
+}
+
+.filter-container input:focus,
+.filter-container select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* ===== Add Password Form ===== */
+.add-password-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.add-password-form input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1 1 250px;
+    font-size: 16px;
+    background: white;
+    transition: 0.3s ease-in-out;
+}
+
+.add-password-form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.add-password-form .btn {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border: none;
+}
+
+.add-password-form .btn:hover {
+    background-color: #218838;
+}
+
+#security-score {
+    position: absolute;
+    display: block;
+    visibility: visible;
+}
+
+/* ===== Strength Bar Placeholder ===== */
+.strength-bar {
+    height: 8px;
+    width: 100%;
+    max-width: 350px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+/* ===== Password Table ===== */
+.password-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.password-table th,
+.password-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.password-table thead {
+    background: #007bff;
+    color: white;
+}
+
+.password-table td {
+    font-size: 16px;
+}
+
+/* Action Buttons */
+.mpass-btn.btn-edit {
+    background-color: #ffc107;
+    color: white;
+    border: 2px solid #ffc107;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.mpass-btn.btn-edit:hover {
+    background-color: white;
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+.mpass-btn.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: 2px solid #dc3545;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.mpass-btn.btn-delete:hover {
+    background-color: white;
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.password-field {
+    cursor: pointer;
+    font-family: 'monospace';
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.password-field {
+    cursor: pointer;
+    font-family: monospace;
+    color: #555;
+    transition: color 0.3s ease;
+    text-align: center;
+}
+
+.password-field:hover {
+    color: #000;
+}
+
+/* Strength Tags */
+.strong {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.weak {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Modal Overlay */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+/* Hide Modal */
+.hidden {
+    display: none;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-top: 6px solid #007bff; /* Blue Accent Border */
+}
+
+/* Modal Heading */
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Labels Above Fields */
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+    width: 80%;
+    margin-left: 10%;
+}
+
+/* Input Fields */
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    display: block;
+    margin-left: 10%;
+}
+
+/* Confirmation Checkbox and Text Alignment */
+.confirm-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.confirm-label input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+/* Modal Action Buttons */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Save Button */
+.btn-save {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-save:disabled {
+    background-color: #a8d5a3;
+    cursor: not-allowed;
+}
+
+/* Discard Button */
+.btn-discard {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Delete Modal Styling */
+#delete-modal .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-top: 6px solid #dc3545; /* Red Accent for Danger */
+}
+
+#delete-modal .modal-content h2 {
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+#delete-modal .modal-content p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+#delete-modal .modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-confirm-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-cancel-delete {
+    background-color: #6c757d; /* Gray for cancel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ---------- Modal Styles for Profile & Password ---------- */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 450px;
+  box-sizing: border-box;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-warning {
+  color: #c33;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.25em;
+  font-weight: bold;
+}
+
+.input-field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.confirm-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 1em;
+}

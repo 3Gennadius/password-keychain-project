@@ -1,0 +1,229 @@
+/* ===== Shared Page Container Styling ===== */
+.settings-page {
+    max-width: 500px;
+    margin: 80px auto;
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Headings ===== */
+.settings-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ===== Input Fields ===== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    background: #f9f9f9;
+}
+
+/* ===== Textarea Styling ===== */
+textarea {
+    resize: none;
+}
+
+/* ===== Profile Picture Styling ===== */
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ===== Toggle Switches ===== */
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f1f1f1;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    font-size: 16px;
+    border: 1px solid #ddd;
+}
+
+/* Hide default checkbox */
+.toggle-switch input {
+    display: none;
+}
+
+/* Slider Styling */
+.toggle-switch .slider {
+    width: 45px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+/* Circle inside the slider */
+.toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 1px;
+    top: 1px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+/* When toggled */
+.toggle-switch input:checked + .slider {
+    background: #007bff;
+}
+
+.toggle-switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+/* ===== Buttons ===== */
+.save-btn,
+.btn,
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin: 10px;
+}
+
+/* Primary Button */
+.save-btn,
+.btn {
+    background: #007bff;
+    color: white;
+}
+
+.save-btn:hover,
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+/* ===== Back Link ===== */
+.back-to-settings {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.back-to-settings:hover {
+    text-decoration: underline;
+}
+
+/* ===== Logout Page Styling ===== */
+.logout-container {
+    max-width: 500px;
+    margin: 120px auto;
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logout-container h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-bottom: 15px;
+}
+
+.logout-container p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* ===== Settings Hub (Main settings.html) ===== */
+.settings-container {
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.settings-container h2 {
+    font-size: 28px;
+    color: #1f2937;
+    margin-bottom: 30px;
+}
+
+/* List of links in settings */
+.settings-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Individual setting option */
+.settings-option {
+    width: 80%;
+    max-width: 400px;
+    padding: 14px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.settings-option:hover {
+    background: #0056b3;
+}
+
+/* Special style for logout link */
+.settings-option.logout {
+    background: #d9534f;
+}
+
+.settings-option.logout:hover {
+    background: #c82333;
+}
+

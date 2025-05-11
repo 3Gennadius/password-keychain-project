@@ -1,35 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Settings | DúnKey</title>
-    <link rel="stylesheet" href="/settings.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | DúnKey</title>
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard-mpass.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-    <div class="settings-page">
-        <h2>Profile Settings</h2>
-        
-        <div class="profile-info">
-            <img src="assets/profile-placeholder.png" alt="Profile Picture" class="profile-pic">
-            <input type="file" id="profile-pic-upload">
-        </div>
+<!-- Navigation Bar -->
+<nav class="topnav" id="myTopnav">
+  <div class="logo">
+    <img src="assets/D.svg" alt="DúnKey Logo">
+    <span class="brand-name">DúnKey</span>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <!-- Dynamic links inserted by authentication.js -->
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</nav>
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" value="User123">
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" value="user@example.com">
-        
-        <label for="password">Change Password:</label>
-        <input type="password" id="password">
-        
-        <a href="/settings.html">
-        <button class="save-btn">Save Changes</button>
-        </a>
-        
+<!-- Profile Section -->
+<section class="settings-page">
+  <div class="profile-card">
+    <h1 class="profile-title">Your Profile</h1>
+    <form id="profile-form">
+      <div class="form-group">
+    <label for="avatar">Upload Avatar (Max 512KB, JPG/PNG/GIF):</label>
+    <input type="file" id="avatar" name="avatar" accept=".png, .jpg, .jpeg, .gif" required />
+    <button type="submit" id="avatar-upload-btn" class="btn-save">Upload Avatar</button>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="input-field" readonly />
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail Address</label>
+        <input type="email" id="email" name="email" class="input-field" readonly />
+      </div>
+      <div class="form-group profile-action-group">
+        <button type="button" id="open-profile-modal" class="btn profile-action-btn">Change Profile Credentials</button>
+        <button type="button" id="open-password-modal" class="btn profile-action-btn">Change Master Password</button>
+      </div>
+            <div class="dark-mode-toggle">
+      <div class="toggle-container">
+        <label class="switch">
+          <input type="checkbox" id="dark-mode-toggle">
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">Enable Dark Mode</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Change Profile Modal -->
+<div id="profile-modal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Change Profile Credentials</h2>
+    <form id="profile-change-form">
+      <label for="new-username">New Username</label>
+      <input type="text" id="new-username" name="new_username" required />
+
+      <label for="new-email">New E-mail</label>
+      <input type="email" id="new-email" name="new_email" required />
+
+      <label for="confirm-profile-change">
+        <input type="checkbox" id="confirm-profile-change" />
+        Confirm changes
+      </label>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-save">Save Changes</button>
+        <button type="button" class="btn-discard" onclick="closeModal('profile-modal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="password-modal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Change Master Password</h2>
+    <form id="password-change-form">
+      <label for="current-password">Current Password</label>
+      <input type="password" id="current-password" name="current_password" required />
+
+      <label for="new-password">New Password</label>
+      <input type="password" id="new-password" name="new_password" required />
+
+      <label for="confirm-password">Confirm New Password</label>
+      <input type="password" id="confirm-password" name="confirm_password" required />
+
+      <label for="confirm-password-change">
+        <input type="checkbox" id="confirm-password-change" />
+        Confirm changes
+      </label>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-save">Change Password</button>
+        <button type="button" class="btn-discard" onclick="closeModal('password-modal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column align-left">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
     </div>
+    <div class="footer-column center-brand">
+      <h3>DúnKey</h3>
+      <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
+      <p class="footer-motto">Simple. Secure. Yours.</p>
+    </div>
+    <div class="footer-column align-right">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 DúnKey. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript Files -->
+<script src="js/profile_avatar.js"></script>
+<script src="js/authentication.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>

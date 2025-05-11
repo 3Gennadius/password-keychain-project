@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout | DúnKey</title>
-    <link rel="stylesheet" href="/settings.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logout | DúnKey</title>
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-    <div class="logout-container">
-        <h2>Successfully Logged Out</h2>
-        <p>You have been securely logged out of your account.</p>
-        
-        <a href="/login.html" class="btn">Login Again</a>
-        <a href="/index.html" class="btn-secondary">Return to Home</a>
+<!-- Navigation Bar -->
+<nav class="topnav" id="myTopnav">
+  <div class="logo">
+    <img src="assets/D.svg" alt="DúnKey Logo" />
+    <span class="brand-name">DúnKey</span>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <!-- Dynamic links handled by authentication.js -->
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</nav>
 
-       
-    </div>
+<!-- Logout Confirmation -->
+<div class="logout-container">
+  <div id="confirm-logout">
+    <h2>Are you sure you want to log out?</h2>
+    <button id="confirm-btn" class="btn">Yes, log me out</button>
+    <button id="cancel-btn" class="btn-secondary">Cancel</button>
+  </div>
+
+  <div id="post-logout" style="display:none;">
+    <h2>Successfully Logged Out</h2>
+    <p>You have been securely logged out of your account.</p>
+
+    <a href="login.html" class="btn">Login Again</a>
+    <a href="index.html" class="btn-secondary">Return to Home</a>
+  </div>
+</div>
+
+<!-- JavaScript Files -->
+<script src="js/authentication.js"></script>
+<script src="js/script.js"></script>
+<script src="js/logout.js"></script>
 
 </body>
 </html>

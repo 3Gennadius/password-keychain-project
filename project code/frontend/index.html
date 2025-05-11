@@ -1,108 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DúnKey - Secure Your Passwords</title>
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DúnKey - Secure Your Passwords</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="js/authentication.js"></script>
+</head>
+<body>
 
-        <!--Navigation Bar-->
-        <nav class="topnav" id="myTopnav">
-            <div class="logo">
-                <img src="/assets/D.svg" alt="DúnKey Logo">
-                <span class="brand-name">DúnKey</span>
-            </div>
-            <div class="nav-links" id="nav-links">
-                <a href="/index.html" class="active">Home</a>
-                <a href="/login.html">Login</a>
-                <a href="/register.html">Register</a>
-                <a href="/about.html">About</a>
-                <a href="/security-tips.html">Security Tips</a>
-                <a href="/contacthome.html">Contact</a>
+<!-- Navigation Bar -->
+<nav class="topnav" id="myTopnav">
+  <div class="logo">
+    <img src="assets/D.svg" alt="DúnKey Logo">
+    <span class="brand-name">DúnKey</span>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="faq.html">FAQ</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</nav>
 
-                 <!-- Close Menu Button (shown only on mobile) -->
-                 <a href="javascript:void(0);" class="close-menu" onclick="toggleNav()">
-                    <span>&#10094;</span> Close
-                  </a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </nav>
+<!-- Hero Section -->
+<header class="hero">
+  <div class="hero-content">
+    <img src="assets/D.svg" alt="DúnKey Logo" class="hero-logo">
+    <h1>Secure Your Digital Life</h1>
+    <p>Encrypted, Reliable, and Easy-to-Use Password Manager</p>
+    <a href="register.html" class="btn">Get Started</a>
+  </div>
+</header>
 
-         <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <img src="assets/D.svg" alt="DúnKey Logo" class="hero-logo">
-            <h1>Secure Your Digital Life</h1>
-            <p>Encrypted, Reliable, and Easy-to-Use Password Manager</p>
-            <a href="/register.html" class="btn">Get Started</a>
-        </div>
-    </header>
+<!-- Features Section -->
+<section class="features">
+  <h2>Why Choose DúnKey?</h2>
+  <div class="feature-box">
+    <div class="feature">
+      <h3>🔐 Military-Grade Encryption</h3>
+      <p>Your passwords are protected with AES-256 encryption.</p>
+    </div>
+    <div class="feature">
+      <h3>💾 Secure Cloud Storage</h3>
+      <p>Access your passwords anytime, anywhere.</p>
+    </div>
+    <div class="feature">
+      <h3>✅ User-Friendly Interface</h3>
+      <p>Simple, clean, and efficient for everyone.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <h2>Why Choose DúnKey?</h2>
-        <div class="feature-box">
-            <div class="feature">
-                <h3>🔐 Military-Grade Encryption</h3>
-                <p>Your passwords are protected with AES-256 encryption.</p>
-            </div>
-            <div class="feature">
-                <h3>💾 Secure Cloud Storage</h3>
-                <p>Access your passwords anytime, anywhere.</p>
-            </div>
-            <div class="feature">
-                <h3>✅ User-Friendly Interface</h3>
-                <p>Simple, clean, and efficient for everyone.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+<!-- Footer -->
 <footer class="footer">
-    <div class="footer-container">
-      
-      <!-- Company Left -->
-      <div class="footer-column align-left">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about.html">About Us</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-          <li><a href="/faq.html">FAQ</a></li>
-        </ul>
-      </div>
-  
-      <!-- Brand Center -->
-      <div class="footer-column center-brand">
-        <h3>DúnKey</h3>
-        <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
-        <p class="footer-motto">Simple. Secure. Yours.</p>
-      </div>
-  
-      <!-- Legal Right -->
-      <div class="footer-column align-right">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
-        </ul>
-      </div>
+  <div class="footer-container">
+    <div class="footer-column align-left">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
     </div>
-  
 
-  
-    <!-- Bottom Line -->
-    <div class="footer-bottom">
-      <p>&copy; 2024 DúnKey. All rights reserved.</p>
+    <div class="footer-column center-brand">
+      <h3>DúnKey</h3>
+      <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
+      <p class="footer-motto">Simple. Secure. Yours.</p>
     </div>
-  </footer>
 
-        </header>
-        <script src="/script.js"></script>
-    </body>
+    <div class="footer-column align-right">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2024 DúnKey. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript Files -->
+<script src="js/authentication.js"></script>
+<script src="js/script.js"></script>
+
+</body>
 </html>
-

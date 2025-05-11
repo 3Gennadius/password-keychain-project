@@ -1,27 +1,78 @@
-from flask import Flask, render_template_string, send_from_directory
+# File: main.py
+
 import os
-import webbrowser
+from dotenv import load_dotenv
+from datetime import timedelta
+from flask import Flask, send_from_directory, redirect
+from flask_login import current_user
+from flask_jwt_extended import JWTManager
 
-#Configure flask
-app = Flask(__name__)
+from backend import create_app, db, login_manager
+from backend.model import User
 
-#Configure routes for webpages and other static files
+# Load environment variables
+load_dotenv()
+
+# Create app and initialize JWT
+app = create_app()
+jwt = JWTManager(app)
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+# Register user_loader on the shared login_manager
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.get(User, int(user_id))
+
+
+# Static and protected routes
+BASE = os.path.dirname(os.path.abspath(__file__))
+FE = os.path.join(BASE, 'frontend')
+
 @app.route('/')
 def index():
-    return send_from_directory('frontend', 'index.html')
+    return send_from_directory(FE, 'index.html')
 
-@app.route('/<page>.html')
-def other_html_pages(page):
-    return send_from_directory('frontend', f"{page}.html")
+@app.route('/login.html')
+def login_page():
+    if current_user.is_authenticated:
+        return redirect('/dashboard.html')
+    return send_from_directory(FE, 'login.html')
 
-@app.route('/<filename>')
-def serve_static_file(filename):
-    return send_from_directory('frontend', filename)
+@app.route('/register.html')
+def register_page():
+    if current_user.is_authenticated:
+        return redirect('/dashboard.html')
+    return send_from_directory(FE, 'register.html')
 
-@app.route('/assets/<path:filename>')
-def serve_asset_file(filename):
-    return send_from_directory('frontend/assets', filename)
+@app.route('/dashboard.html')
+def dashboard_page():
+    if not current_user.is_authenticated:
+        return redirect('/login.html')
+    return send_from_directory(FE, 'dashboard.html')
+
+@app.route('/manage-passwords.html')
+def manage_passwords_page():
+    if not current_user.is_authenticated:
+        return redirect('/login.html')
+    return send_from_directory(FE, 'manage-passwords.html')
+
+@app.route('/profile.html')
+def profile_page():
+    if not current_user.is_authenticated:
+        return redirect('/login.html')
+    return send_from_directory(FE, 'profile.html')
+
+@app.route('/logout.html')
+def logout_page():
+    if not current_user.is_authenticated:
+        return redirect('/login.html')
+    return send_from_directory(FE, 'logout.html')
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(FE, filename)
+
 
 if __name__ == '__main__':
-    webbrowser.open("http://127.0.0.1:5000/")
     app.run(debug=True)

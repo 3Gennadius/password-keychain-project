@@ -1,133 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | DúnKey</title>
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/dashboard-mpass.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard | DúnKey</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard-mpass.css" />
+  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
 
-   <!-- Navigation Bar (Post-Login) -->
-<nav class="topnav" id="myTopnav">
+  <!-- Navigation Bar -->
+  <nav class="topnav" id="myTopnav">
     <div class="logo">
-        <img src="assets/D.svg" alt="DúnKey Logo">
-        <span class="brand-name">DúnKey</span>
-    </div>
-    
-    <div class="nav-links">
-        <a href="/manage-passwords.html">Manage Passwords</a>
-        <a href="/settings.html">Settings</a>
-
-        <!-- Close Menu Button (shown only on mobile) -->
-        <a href="javascript:void(0);" class="close-menu" onclick="toggleNav()">
-            <span>&#10094;</span> Close
-          </a>
-        
+      <img src="assets/D.svg" alt="DúnKey Logo">
+      <span class="brand-name">DúnKey</span>
     </div>
 
-    <!-- Hamburger Icon for Mobile -->
+    <div class="nav-links" id="nav-links">
+      <!-- authentication.js will populate -->
+    </div>
+
     <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
-        <i class="fa fa-bars"></i>
+      <i class="fa fa-bars"></i>
     </a>
-</nav>
+  </nav>
 
-    <!-- Dashboard Container -->
-    <section class="dashboard">
-        <h1>Welcome Back, <span id="user-name">User</span></h1>
+  <!-- Dashboard Container -->
+  <section class="dashboard">
+    <h1>Welcome Back, <span id="user-name"></span>!</h1>
 
-        <div class="circle-container">
-            <svg class="progress-ring" width="150" height="150">
-                <circle class="progress-ring__background" cx="75" cy="75" r="60"></circle>
-                <circle class="progress-ring__progress" cx="75" cy="75" r="60"></circle>
-            </svg>
-            <div class="percentage-text" id="security-score">30%</div>
-        </div>
-        <!-- Weak Password Alert (EXAMPLE BEFORE BACKEND WORK) -->
-        <div class="weak-password-alert">
-            <h3>⚠ Warning: Weak Passwords Detected!</h3>
-            <p>Some of your passwords are weak or reused. Consider updating them.</p>
-            <a href="/manage-passwords.html" class="btn">Update Passwords</a>
-        </div>
+    <div class="circle-container" style="position: relative; display: inline-block;">
+      <svg class="progress-ring" width="150" height="150">
+        <circle class="progress-ring__background" cx="75" cy="75" r="60"></circle>
+        <circle class="progress-ring__progress"     cx="75" cy="75" r="60"></circle>
+      </svg>
+      <div id="security-score" class="percentage-text"></div>
+    </div>  
 
-        <!-- Saved Passwords Table (EXAMPLES BEFORE BACKEND WORK) -->
-        <h2>Your Saved Passwords</h2>
-        <table class="password-table">
-            <thead>
-                <tr>
-                    <th>Website</th>
-                    <th>Username</th>
-                    <th>Strength</th>
-                    <th>Last Updated</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Google</td>
-                    <td>user@gmail.com</td>
-                    <td class="strong">Strong</td>
-                    <td>1 week ago</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Facebook</td>
-                    <td>user123</td>
-                    <td class="weak">Weak</td>
-                    <td>3 months ago</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <!-- Weak Password Alert -->
+    <div id="security-section" class="weak-password-alert" style="display:none; text-align:center; padding: 20px;">
+      <h3>Weak Passwords Detected</h3>
+      <p id="security-message" style="font-size: 1.2em; margin-bottom: 20px;"></p>
+      <a href="manage-passwords.html" class="btn" id="security-action-btn">Improve Vault</a>
+    </div>
+
+    <!-- Password Table -->
+    <table class="password-table">
+    <thead>
+        <tr>
+            <th>Website</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Strength</th>
+        </tr>
+    </thead>
+    <tbody id="dashboard-table-body">
+        <!-- Data rows will be inserted here -->
+    </tbody>
+    </table>
+  </section>
 
   <!-- Footer -->
-<footer class="footer">
+  <footer class="footer">
     <div class="footer-container">
-      
-      <!-- Company Left -->
       <div class="footer-column align-left">
         <h4>Company</h4>
         <ul>
-          <li><a href="/about.html">About Us</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
-  
-      <!-- Brand Center -->
+
       <div class="footer-column center-brand">
         <h3>DúnKey</h3>
         <img src="assets/D.svg" alt="DúnKey Logo" class="footer-logo" />
         <p class="footer-motto">Simple. Secure. Yours.</p>
       </div>
-  
-      <!-- Legal Right -->
+
       <div class="footer-column align-right">
         <h4>Legal</h4>
         <ul>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
         </ul>
       </div>
     </div>
-  
 
-  
-    <!-- Bottom Line -->
     <div class="footer-bottom">
       <p>&copy; 2024 DúnKey. All rights reserved.</p>
     </div>
   </footer>
 
-    <script src="/script.js"></script>
+
+
+  <!-- Scripts -->
+       <script src="js/dashboard.js"></script>
+    <script src="/js/authentication.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 </body>
 </html>

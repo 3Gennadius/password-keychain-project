@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DúnKey - Login</title>
-    <link rel="stylesheet" href="/styles-reg-log.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DúnKey - Login</title>
+  <link rel="stylesheet" href="/css/styles-reg-log.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-    <!-- Login Container -->
-    <div class="login-container">
-        <img src="assets/D.svg" alt="DúnKey Logo" class="logo">
-        <h2>Welcome Back</h2>
-        <p>Securely access your password vault.</p>
+<!-- Login Container -->
+<div class="login-container">
+  <img src="/assets/D.svg" alt="DúnKey Logo" class="logo">
+  <h2>Welcome Back</h2>
+  <p>Securely access your password vault.</p>
 
-        <form>
-            <input type="text" placeholder="Username or Email" required>
-            <input type="password" placeholder="Password" required>
-            <a href="/dashboard.html"><button type="button">Login</button>
-            </a>
-        </form>
+  <!-- Error message display -->
+  <p id="error-message" style="color: red; text-align: center;"></p>
+  <div id="message-box" style="display: none;"></div>
 
-        <p class="register-link">Don't have an account? <a href="/register.html">Register Here</a></p>
-    </div>
+  <form id="login-form">
+    <input type="text" id="identifier" name="identifier" placeholder="Username or Email" required>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+
+  <p class="register-link">
+    Don't have an account?
+    <a href="/register.html">Register Here</a>
+  </p>
+  <a href="/index.html" class="back-home-btn">← Back to Home</a>
+</div>
+
+<!-- JavaScript Files -->
+<script src="/js/authentication.js"></script>
+<script src="/js/login.js"></script>
 
 </body>
 </html>
