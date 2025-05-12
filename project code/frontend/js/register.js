@@ -3,48 +3,69 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorMessage = document.getElementById('error-message');
 
   form.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent default form submission
-
-    // Clear previous messages
+    event.preventDefault();
     errorMessage.textContent = '';
 
-    // Collect form data
     const formData = new FormData(form);
+    const username = formData.get('username')?.trim();
+    const email = formData.get('email')?.trim();
+    const password = formData.get('password');
+    const confirmPassword = formData.get('confirm_password');
+
+    // Client-Side Validations 
+    if (!username || username.length < 3) {
+      errorMessage.textContent = 'Username must be at least 3 characters long.';
+      errorMessage.style.color = 'red';
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      errorMessage.textContent = 'Please enter a valid email address.';
+      errorMessage.style.color = 'red';
+      return;
+    }
+
+    if (password.length < 8) {
+      errorMessage.textContent = 'Password must be at least 8 characters long.';
+      errorMessage.style.color = 'red';
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      errorMessage.textContent = 'Passwords do not match.';
+      errorMessage.style.color = 'red';
+      return;
+    }
+
+    // Optional: Password Strength Validation (at least 1 uppercase, 1 number)
+    const strongPasswordPattern = /^(?=.*[A-Z])(?=.*\d).+$/;
+    if (!strongPasswordPattern.test(password)) {
+      errorMessage.textContent = 'Password must contain at least one uppercase letter and one number.';
+      errorMessage.style.color = 'red';
+      return;
+    }
 
     try {
       const response = await fetch('/auth/register', {
         method: 'POST',
         body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
 
-      if (response.redirected && response.url.includes('register.html')) {
-    errorMessage.textContent = 'Pssswords do not match or do not meet security standards, please try again';
-    return;
-    }
+      const result = await response.json();
 
-      if (response.redirected) {
-        // Successful registration, backend redirects to login
-        window.location.href = response.url;
-        return;
-      }
-
-      const responseText = await response.text();
-
-      // Attempt to extract flash messages from HTML response
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(responseText, 'text/html');
-      const flashMessage = doc.querySelector('.flash-message, #flash, .alert, .error, .success');
-
-      if (flashMessage) {
-        errorMessage.textContent = flashMessage.textContent.trim();
+      if (response.ok && result.success) {
+        window.location.href = result.redirect_url || '/login';
       } else {
-        // Generic fallback
-        errorMessage.textContent = 'Registration failed. Please check your input and try again.';
+        errorMessage.textContent = result.message || 'Registration failed. Please check your inputs.';
+        errorMessage.style.color = 'red';
       }
-
     } catch (error) {
-      console.error('Error during registration:', error);
-      errorMessage.textContent = 'An unexpected error occurred. Please try again later.';
+      errorMessage.textContent = 'Server error. Please try again later.';
+      errorMessage.style.color = 'red';
     }
   });
 });

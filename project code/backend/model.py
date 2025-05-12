@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
 
 
 
-    # --- Bcrypt-based login password hashing ---
+    # Bcrypt-based login password hashing 
     def set_login_password(self, raw: str):
         """Hash the login password with bcrypt."""
         from flask_bcrypt import generate_password_hash
@@ -30,7 +30,7 @@ class User(db.Model, UserMixin):
         from flask_bcrypt import check_password_hash
         return check_password_hash(self.password_hash, raw)
 
-    # --- Master password for vault is encrypted with AES ---
+    # Master password for vault is encrypted with AES 
     encrypted_master_password = db.Column(db.LargeBinary)
 
     def set_master_password(self, raw: str):

@@ -6,16 +6,12 @@ import os
 from mimetypes import guess_type
 import imghdr
 
-# ————————————————————————————
 # General Validation Configs
-# ————————————————————————————
 MAX_AVATAR_SIZE = 512 * 1024  # 512 KB
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 
-# ————————————————————————————
 # Login & Registration Validation
-# ————————————————————————————
 def sanitize_username(username: str) -> str:
     """Strip everything except letters, digits, underscores, and dots."""
     return re.sub(r'[^a-zA-Z0-9_.]', '', username).strip()
@@ -31,9 +27,7 @@ def is_strong_password(password: str) -> bool:
     ))
 
 
-# ————————————————————————————
 # Password Change Validation
-# ————————————————————————————
 def validate_password_change(
     old_password: str,
     new_password: str,
@@ -60,9 +54,7 @@ def validate_password_change(
     return errors
 
 
-# ————————————————————————————
 # Contact Form Validation
-# ————————————————————————————
 def validate_contact(name: str, email: str, message: str) -> dict:
     errors = {}
     if not name.strip():
@@ -76,9 +68,7 @@ def validate_contact(name: str, email: str, message: str) -> dict:
     return errors
 
 
-# ————————————————————————————
 # Vault Entry Validation
-# ————————————————————————————
 def validate_vault_entry(entry_website: str, entry_username: str, entry_password: str) -> dict:
     errors = {}
     if not entry_website.strip():
@@ -96,9 +86,7 @@ def validate_vault_password_confirm(password: str, confirm_password: str) -> dic
     return errors
 
 
-# ————————————————————————————
 # Avatar Upload Validation
-# ————————————————————————————
 def allowed_file(filename: str) -> bool:
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -131,3 +119,29 @@ def validate_avatar(file_storage, user_id: int) -> str:
     # Generate unique, safe filename (e.g., 15_avatar.png)
     unique_filename = f"{user_id}_avatar.{ext}"
     return unique_filename
+
+    #This is used to validate vault entries for their sgrength and find  entries with same username/ same password
+
+def flag_weak_entries(entries: list[dict]) -> list[dict]:
+    flagged_entries = []
+    passwords = [e['password'] for e in entries]
+    usernames = [e['username'] for e in entries]
+
+    for entry in entries:
+        username = entry['username']
+        password = entry['password']
+
+        is_weak = (
+            not is_strong_password(password) or
+            username == password or
+            passwords.count(password) > 1 or
+            usernames.count(username) > 1
+        )
+
+        flagged_entries.append({
+            'username': username,
+            'password': password,
+            'is_weak': is_weak
+        })
+
+    return flagged_entries

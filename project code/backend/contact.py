@@ -51,7 +51,7 @@ def contact_send():
         body_lines.append(f"User ID: {current_user.user_id}")
         body_lines.append(f"Username: {current_user.username}")
         body_lines.append(f"Registered Email: {current_user.email}")
-        body_lines.append("")  # blank line
+        body_lines.append("")
 
     body_lines.append(f"From: {user_name} <{user_email}>")
     body_lines.append("")

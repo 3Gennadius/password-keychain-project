@@ -14,9 +14,7 @@ bp = Blueprint('passwords', __name__, url_prefix='/passwords')
 def list_entries():
     return render_template('manage-passwords.html')
 
-# =======================
 # JSON API Endpoints for Vault CRUD
-# =======================
 
 @bp.route('/api', methods=['GET'])
 @login_required
@@ -81,3 +79,36 @@ def api_delete(entry_id):
     db.session.delete(entry)
     db.session.commit()
     return ('', 204)
+
+
+@bp.route('/api/search', methods=['GET'])
+@login_required
+@limiter.limit("60 per minute")
+def api_search():
+    search_query = request.args.get('search', '').lower()
+    strength_filter = request.args.get('strength', 'all').lower()
+
+    entries = PasswordEntry.query.filter_by(user_id=current_user.user_id).all()
+
+    filtered_entries = []
+    for entry in entries:
+        website = entry.get_website().lower()
+        username = entry.get_username().lower()
+        password = entry.get_password()
+
+        matches_search = search_query in website or search_query in username
+
+        # Calculate strength using backend logic (assuming is_strong_password exists)
+        from .validation import is_strong_password
+        strength = 'strong' if is_strong_password(password) else 'weak'
+
+        matches_strength = (
+            strength_filter == 'all' or strength == strength_filter
+        )
+
+        if matches_search and matches_strength:
+            entry_dict = entry.to_dict()
+            entry_dict['password_strength'] = strength
+            filtered_entries.append(entry_dict)
+
+    return jsonify(filtered_entries), 200

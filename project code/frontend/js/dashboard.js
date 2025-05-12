@@ -14,20 +14,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const passwords = data.map(entry => entry.password.trim());
 
         data.forEach(entry => {
-            const strength = calculateStrength(entry, usernames, passwords);
-
+            const isWeak = checkWeakEntry(entry, usernames, passwords);
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${sanitize(entry.website)}</td>
                 <td>${sanitize(entry.username)}</td>
                 <td>${sanitize(entry.password)}</td>
-                <td>${formatStrength(strength)}</td>
+                <td>${formatStrength(isWeak)}</td>
             `;
             tableBody.appendChild(row);
         });
     }
 
-    function calculateStrength(entry, allUsernames, allPasswords) {
+    function checkWeakEntry(entry, allUsernames, allPasswords) {
         const username = entry.username.trim();
         const password = entry.password.trim();
 
@@ -35,29 +34,77 @@ document.addEventListener('DOMContentLoaded', function () {
         const duplicatePassword = allPasswords.filter(p => p === password).length > 1;
         const usernameEqualsPassword = username === password;
 
-        return (duplicateUsername || duplicatePassword || usernameEqualsPassword) ? 'Weak' : 'Strong';
+        return (
+            !isStrongPassword(password) ||
+            usernameEqualsPassword ||
+            duplicateUsername ||
+            duplicatePassword
+        );
     }
 
-    function formatStrength(strength) {
-        const color = strength === 'Strong' ? 'green' : 'red';
-        return `<span style="color: ${color}; font-weight: bold;">${sanitize(strength)}</span>`;
+    function isStrongPassword(password) {
+        if (password.length < 8) return false;
+        if (!/[A-Z]/.test(password)) return false;
+        if (!/\d/.test(password)) return false;
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) return false;
+        return true;
     }
 
-    function sanitize(text) {
-        const div = document.createElement('div');
-        div.textContent = text || '';
-        return div.innerHTML;
+    function sanitize(str) {
+        const temp = document.createElement('div');
+        temp.textContent = str;
+        return temp.innerHTML;
     }
 
-    function loadData() {
-        fetch(apiEndpoint)
-            .then(response => response.json())
-            .then(data => renderTable(data))
-            .catch(error => {
-                console.error('Error fetching dashboard data:', error);
-                tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Error loading data.</td></tr>';
-            });
+    function formatStrength(isWeak) {
+        return isWeak 
+            ? '<span style="color:red;">Weak</span>' 
+            : '<span style="color:green;">Strong</span>';
     }
 
-    loadData();
+    // Fetch and render table data + handle security section
+    fetch(apiEndpoint, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+        renderTable(data);
+
+        const securitySection = document.getElementById('security-section');
+        const securityMessage = document.getElementById('security-message');
+        const actionButton = document.getElementById('security-action-btn');
+
+        if (!Array.isArray(data) || data.length === 0) {
+            // Vault is empty
+            securitySection.style.display = 'block';
+            securityMessage.textContent = 'Your vault is currently empty. Start storing your credentials securely.';
+            actionButton.textContent = 'Go to Vault';
+            actionButton.href = 'manage-passwords.html';
+            return;
+        }
+
+        const hasWeak = data.some(entry => checkWeakEntry(entry, 
+            data.map(e => e.username.trim()), 
+            data.map(e => e.password.trim())
+        ));
+
+        securitySection.style.display = 'block';
+        if (hasWeak) {
+            securityMessage.textContent = 'Weak passwords detected. Consider updating them for better security.';
+            actionButton.textContent = 'Update Entries';
+            actionButton.href = 'manage-passwords.html';
+        } else {
+            securityMessage.textContent = 'All your credentials meet the security standards.';
+            actionButton.textContent = 'Go to Vault';
+            actionButton.href = 'manage-passwords.html';
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching password data:', error);
+        const securitySection = document.getElementById('security-section');
+        if (securitySection) {
+            securitySection.style.display = 'none';
+        }
+    });
 });

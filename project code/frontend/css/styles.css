@@ -432,9 +432,9 @@
     }
   }
   
-  /* ====================================
+  /* 
      ANIMATIONS
-  ==================================== */
+   */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -446,11 +446,10 @@
   }
 
 
-  /* ====================================
+  /* 
      DARKMODE
-  ==================================== */
+   */
 :root {
-  /* Light‐mode defaults (match your current colors exactly) */
   --bg-color: #ffffff;
   --text-color: #333333;
   --feature-bg-color: #ffffff;
@@ -601,7 +600,7 @@ input:checked + .slider:before {
 .toggle-label {
   margin-left: 12px;
   font-size: 1.1em;
-  color: #2c3e50; /* Adjust to match your palette */
+  color: #2c3e50; 
   font-weight: 500;
 }
 
@@ -645,7 +644,7 @@ input:checked + .slider:before {
 
 /* Toggle ON */
 input:checked + .slider {
-  background-color: #28a745; /* Green, matches your save button */
+  background-color: #28a745; 
 }
 
 input:checked + .slider::before {

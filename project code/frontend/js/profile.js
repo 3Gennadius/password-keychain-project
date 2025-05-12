@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => tip.remove(), 1500);
   }
 
-  // 1) Load and display existing profile data
+  //  Load and display existing profile data
   (async () => {
     try {
       const resp = await fetch('/profile/api', { credentials: 'include' });
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
-  // 2) Make fields readonly and enable click-to-copy
+  //  Make fields readonly and enable click-to-copy
   [userField, emailField].forEach(el => {
     el.readOnly = true;
     el.style.cursor = 'pointer';
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3) Modal open/close logic
+  //  Modal open/close logic
   function openModal(id) {
     const m = document.getElementById(id);
     if (m) m.classList.remove('hidden');
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   btnProfile?.addEventListener('click', () => openModal('profile-modal'));
   btnPassword?.addEventListener('click', () => openModal('password-modal'));
 
-  // 4) Checkbox logic to enable action buttons
+  // Checkbox logic to enable action buttons
   function setupCheckbox(cbId, btnSelector) {
     const cb = document.getElementById(cbId);
     const btn = document.querySelector(btnSelector);
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCheckbox('confirm-profile-change', '#profile-modal .btn-save');
   setupCheckbox('confirm-password-change', '#password-modal .btn-save');
 
-  // 5) Handle Profile Credentials form submission
+  //  Handle Profile Credentials form submission
   const profileForm = document.querySelector('#profile-modal form');
   if (profileForm) {
     profileForm.addEventListener('submit', async e => {
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6) Handle Password Change form submission
+  //  Handle Password Change form submission
   const passwordForm = document.querySelector('#password-modal form');
   if (passwordForm) {
     passwordForm.addEventListener('submit', async e => {

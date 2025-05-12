@@ -7,7 +7,7 @@ from Crypto.Util.Padding import pad, unpad
 # Load environment variables from .env (if present)
 load_dotenv()
 
-# --- Load and validate encryption key ---
+# Load and validate encryption key
 _key_b64 = os.getenv('DUNKEY_AES_KEY')
 if not _key_b64:
     raise RuntimeError(

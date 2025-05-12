@@ -1,9 +1,5 @@
-// File: frontend/js/authentication.js
-
-// Existing logic preserved...
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Existing authentication logic here...
 
   // Avatar display logic in topnav
   const profileLink = document.querySelector('a[href="profile.html"]');
@@ -37,17 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ------------------------------
 // Mobile Nav Toggle
-// ------------------------------
+
 function toggleNav() {
   document.getElementById('myTopnav').classList.toggle('responsive');
 }
 window.toggleNav = toggleNav;
 
-// ------------------------------
+
 // Authentication & Nav Links
-// ------------------------------
 async function populateNavLinks() {
   const container = document.getElementById('nav-links');
   if (!container) return;

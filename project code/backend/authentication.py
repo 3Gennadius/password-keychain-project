@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, request, redirect, redirect, flash, current_app, send_from_directory, session
+from flask import Blueprint, jsonify, request, redirect, redirect, flash, current_app, send_from_directory, session
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_jwt_extended import create_access_token
 from . import db, csrf, limiter
@@ -11,6 +11,15 @@ from .logging_utils import log_login_failed, log_login_success, log_register
 FE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'frontend')
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+
+@auth_bp.route('/userinfo', methods=['GET'])
+@login_required
+def userinfo():
+    return jsonify({
+        'success': True,
+        'username': current_user.username
+    })
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 @csrf.exempt

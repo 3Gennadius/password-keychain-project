@@ -1,9 +1,7 @@
 
 // vault.js - Updated Modal Logic and Full Implementation
 
-// ================================
 // DOM Elements
-// ================================
 const tableBody = document.getElementById('tableBody');
 const addForm = document.getElementById('addForm');
 const editModal = document.getElementById('edit-modal');
@@ -14,9 +12,7 @@ const discardBtn = document.querySelector('.btn-discard');
 const deleteConfirmBtn = document.querySelector('.btn-confirm-delete');
 const deleteCancelBtn = document.querySelector('.btn-cancel-delete');
 
-// ================================
 // Utility Functions
-// ================================
 function closeModal(modal) {
     modal.classList.add('hidden');
 }
@@ -31,9 +27,9 @@ window.addEventListener('click', (e) => {
     if (e.target === deleteModal) closeModal(deleteModal);
 });
 
-// ================================
+
 // Load Vault Entries
-// ================================
+
 async function loadVaultEntries() {
     try {
         const response = await fetch('/passwords/api', {
@@ -49,9 +45,8 @@ async function loadVaultEntries() {
     }
 }
 
-// ================================
+
 // Render Table Rows
-// ================================
 function renderTable(entries) {
     tableBody.innerHTML = '';
 
@@ -104,9 +99,7 @@ function createButton(text, className, onClick) {
     return btn;
 }
 
-// ================================
 // Analyze Entry Strength
-// ================================
 function analyzeStrength(entries) {
     const usernames = {}, passwords = {}, combos = {}, strengthMap = {};
 
@@ -125,9 +118,8 @@ function analyzeStrength(entries) {
     return strengthMap;
 }
 
-// ================================
+
 // Add Entry
-// ================================
 addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -154,9 +146,9 @@ addForm.addEventListener('submit', async (e) => {
     }
 });
 
-// ================================
+
 // Edit Modal Logic
-// ================================
+
 function openEditModal(entry) {
     document.getElementById('edit-entry-id').value = entry.entry_id;
     document.getElementById('edit-website').value = entry.website;
@@ -183,7 +175,6 @@ saveChangesBtn.addEventListener('click', async () => {
     const password = document.getElementById('edit-password').value.trim();
 
     try {
-        // Fix: Use 'website' instead of 'site' to match backend expectations
         const response = await fetch(`/passwords/api/${entryId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -205,9 +196,7 @@ saveChangesBtn.addEventListener('click', async () => {
 
 
 
-// ================================
 // Delete Modal Logic
-// ================================
 function openDeleteModal(entryId) {
     document.getElementById('delete-entry-id').value = entryId;
     openModal(deleteModal);
@@ -237,29 +226,29 @@ deleteCancelBtn.addEventListener('click', () => {
     closeModal(deleteModal);
 });
 
-// ================================
+
 // Initial Load
-// ================================
 
 
-// === Expose Modal Functions Globally ===
+
+
 
 
 loadVaultEntries();
 
 
 window.editEntry = function(id) {
-    // Assuming you have a function to open and populate the edit modal
+
     openEditModal(id);
 };
 
 window.deleteEntry = function(id) {
-    // Assuming you have a function to open and populate the delete modal
+
     openDeleteModal(id);
 };
 
 window.saveEditedEntry = function() {
-    // Handle saving the edited entry (fetch PUT request)
+
     performSaveEdit();
 };
 
@@ -268,7 +257,7 @@ window.closeEditModal = function() {
 };
 
 window.confirmDeleteEntry = function() {
-    // Handle deletion confirmation (fetch DELETE request)
+
     performDelete();
 };
 

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent default form submission
-    errorMessage.textContent = ''; // Clear previous errors
+    errorMessage.textContent = '';
 
     const formData = new FormData(form);
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const responseText = await response.text();
 
-      // Try to extract flash or error messages from the HTML response
+      // Trying to extract error messages from response
       const parser = new DOMParser();
       const doc = parser.parseFromString(responseText, 'text/html');
       const flashMessage = doc.querySelector('.flash-message, #flash, .alert, .error, .success');

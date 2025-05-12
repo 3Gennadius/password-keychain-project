@@ -37,7 +37,7 @@ def init_logging(app):
         )
         return jsonify(error="Too many requests"), 429
 
-# === Manual Logging Methods ===
+# Manual Logging Methods 
 
 def log_login_failed(identifier: str):
     logger.warning(f"LOGIN FAILED for identifier='{identifier}' from IP={request.remote_addr}")
