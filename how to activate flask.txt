@@ -1,0 +1,4 @@
+how to activate flask
+cd "C:\Users\B00142777\Downloads\password-keychain-project\project code"
+.\venv\Scripts\activate
+flask --app main.py run

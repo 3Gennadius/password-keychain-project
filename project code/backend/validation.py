@@ -4,7 +4,7 @@ from PIL import Image
 from io import BytesIO
 import os
 from mimetypes import guess_type
-import imghdr
+import filetype
 
 # General Validation Configs
 MAX_AVATAR_SIZE = 512 * 1024  # 512 KB

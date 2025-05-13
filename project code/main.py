@@ -1,5 +1,5 @@
 # File: main.py
-
+from flask_login import login_required
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
@@ -10,11 +10,14 @@ from flask_jwt_extended import JWTManager
 from backend import create_app, db, login_manager
 from backend.model import User
 
+
 # Load environment variables
 load_dotenv()
 
 # Create app and initialize JWT
 app = create_app()
+from backend.authentication import auth_bp
+app.register_blueprint(auth_bp, url_prefix='/auth')
 jwt = JWTManager(app)
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -46,10 +49,10 @@ def register_page():
     return send_from_directory(FE, 'register.html')
 
 @app.route('/dashboard.html')
+@login_required
 def dashboard_page():
-    if not current_user.is_authenticated:
-        return redirect('/login.html')
-    return send_from_directory(FE, 'dashboard.html')
+    frontend_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'frontend')
+    return send_from_directory(frontend_dir, 'dashboard.html')
 
 @app.route('/manage-passwords.html')
 def manage_passwords_page():
